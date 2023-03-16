@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
+/* 声明全局变量 */
+:root{
+    --line-border-fill: #3498db;
+    --line-border-empty:#e0e0e0;
+}
+
+/* 所有选择器 */
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color:#f6f7fb;
+    font-family: 'Tilt Warp', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 视口单位百分比，%父元素 */
+    height: 100vh;
+    /* 隐藏溢出和清除浮动 */
+    overflow: hidden;
+    margin: 0;
+}
+
+.container{
+    text-align: center;
+}
+
+.progress-container{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+/* 不使用任何图标，实现图标/元素添加显示 */
+.progress-container::before{
+    content: '';
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    /* 放在最后 */
+    z-index: -1;
+}
+
+.progress{
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    /* transform 是用来实现元素坐标空间的变化， translate 用来移动元素， transition 给元素的变化加上动画效果。 */
+    transform: translateY(-50%);
+    z-index: -1;
+    /* ease is like ease-in-out, except it starts slightly faster than it ends. ease-in will start the animation slowly, and finish at full speed.*/
+    transition: 0.4s ease;
+}
+
+.circle{
+    background-color: #f6f7fb;
+    color:#999;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    transition: 0.4s ease;
+}
+
+.circle.active{
+    border-color: var(--line-border-fill);
+}
+
+.btn{
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+/* :active 伪类匹配被用户激活的元素。它让页面能在浏览器监测到激活时给出反馈。当用鼠标交互时，它代表的是用户按下按键和松开按键之间的时间。 */
+.btn:active{
+    transform: scale(0.98);
+}
+
+/* :focus表示获得焦点的元素（如表单输入）。当用户点击或触摸元素或通过键盘的“tab”键选择它时会被触发。 */
+.btn:focus{
+    /* 与border类似，但outline 不占据空间，绘制于元素内容周围。 */
+    outline: 0;
+}
+
+/* :disabled CSS 伪类表示任何被禁用的元素。如果一个元素不能被激活（如选择、点击或接受文本输入）或获取焦点，则该元素处于被禁用状态。 */
+.btn:disabled{
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+}
