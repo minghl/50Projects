@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    font-family:'Ubuntu', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin:0;
+}
+
+.bg{
+    /* center/cover 居中平铺都完成 */
+    background: url('https://images.pexels.com/photos/15927957/pexels-photo-15927957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center/cover;
+    position: absolute;
+    /* 固定位置 */
+    top: -30px;
+    left: -30px;
+    /* 放大缩小图片，且与固定位置绑定，防止溢出 */
+    width: calc(100vw + 60px);
+    height: calc(100vh + 60px);
+    z-index: -1;
+    /* 高斯模糊输出:px */
+    filter: blur(0px);
+}
+
+.loading-text{
+    font-size: 50px;
+    color: #fff;
+}
