@@ -207,3 +207,21 @@ background-size: cover;
 }
 ```
 
+# 08 Form Input Wave
+
+## 01 innerHTML&innerText
+
+```
+// 分割innerText的文字，拆分一个dom节点，创建新的多个dom节点
+label.innerHTML = label.innerText.split('').map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`).join('');
+```
+
+## 02 cubic-bezier(0.68, -0.55, 0.265, 1.55)
+
+```
+https://cubic-bezier.com/#.17,.67,.83,.67
+
+/* progress和time的函数曲线，与ease，linear同等级 */
+transition:0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+```
+
