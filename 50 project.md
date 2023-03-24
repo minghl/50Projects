@@ -225,3 +225,71 @@ https://cubic-bezier.com/#.17,.67,.83,.67
 transition:0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 ```
 
+# 09 Sound Board
+
+## 01 flex-wrap
+
+```
+/* 指定flex元素单行显示还是多行显示 */
+flex-wrap: wrap;
+```
+
+## 02 batch create DOM nodes
+
+```
+sounds.forEach(sound => {
+    // 创建DOM节点，并绑定事件
+    const btn = document.createElement('button');
+    btn.classList.add('btn');
+
+    btn.innerText = sound;
+
+    btn.addEventListener('click', () => {
+        stopSongs();
+    ...
+```
+
+## 03 HTMLMediaElement.play()
+
+```
+// HTMLMediaElement.play() 开始播放媒体，会返回一个promise对象
+document.getElementById(sound).play();
+```
+
+## 04 appendChild()
+
+```
+// js生成的DOM节点插入原生节点
+document.getElementById('buttons').appendChild(btn);
+```
+
+## 05 stop all audio
+
+```
+// 停止所有音频，不会单点停止某一个
+function stopSongs() {
+    sounds.forEach(sound => {
+        const song = document.getElementById(sound);
+
+        // HTMLMediaElement.pause() 暂停音频播放
+        song.pause();
+        // HTMLMediaElement.currentTime 停止播放后归0
+        song.currentTime = 0;
+    })
+}
+```
+
+## 06 HTMLMediaElement.pause()
+
+```
+song.pause();
+```
+
+## 07 HTMLMediaElement.currentTime
+
+```
+// HTMLMediaElement.currentTime 停止播放后归0
+// 控制音频回放，实现可视化时间轴
+song.currentTime = 0;
+```
+
