@@ -293,3 +293,83 @@ song.pause();
 song.currentTime = 0;
 ```
 
+# 10 Dad Jokes
+
+## 01 letter-space
+
+```
+/* 字母的间隙 */
+letter-spacing: 2px;
+```
+
+## 02 box-shadow
+
+```
+/* offset-x | offset-y | blur-radius | color */
+box-shadow: 0 10px 20px rgba(0, 0, 0,0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+```
+
+## 03 async/await
+
+```
+// Using Async/Await
+// 必须使用异步函数，因为fetch发送请求是异步的，不然渲染不出来就结束了
+async function generateJoke() {
+
+    //发送请求配置
+    const config = {
+        headers: {
+            Accept: 'application/json',
+        }
+    }
+
+    // fetch也是异步的，异步用then可以用await替代
+    const res = await fetch('https://icanhazdadjoke.com', config);
+
+    // json也是异步的
+    const data = await res.json();
+
+    jokeEl.innerHTML = data.joke;
+}
+```
+
+## 04 render/update
+
+```
+// 点击更新渲染
+jokeBtn.addEventListener('click', generateJoke);
+
+// 初次渲染
+generateJoke();
+```
+
+# 11 Event KeyCodes
+
+## 01 keydown
+
+```
+// 全局监听按键事件
+window.addEventListener('keydown', ()=>{})
+```
+
+## 02 event.key&event.keyCode&event.code
+
+```
+insert.innerHTML = `
+    <div class="key">
+    ${ev.key === ' ' ? 'Space' : ev.key}
+    <small>event.key</small>
+    </div>
+
+    <div class="key">
+    ${ev.keyCode}
+    <small>event.keyCode</small>
+    </div>
+
+    <div class="key">
+    ${ev.code}
+    <small>event.code</small>
+    </div>
+    `
+```
+
