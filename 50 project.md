@@ -373,3 +373,27 @@ insert.innerHTML = `
     `
 ```
 
+# 12 FAQ Collapse
+
+## 01 content special style
+
+```
+.faq.active::before,
+.faq.active::after{
+    /* before after 添加样式 */
+    content:'\f075';
+    font-family: 'Font Awesome 5 Free';
+}
+```
+
+## 02 parentNode & toggle
+
+```
+toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        // 找父节点的class
+        toggle.parentNode.classList.toggle('active')
+    })
+})
+```
+
