@@ -397,3 +397,77 @@ toggles.forEach(toggle => {
 })
 ```
 
+# 13 Random Choice Picker
+
+## 01 textarea
+
+```
+/* textarea focus的时候也会有border */
+textarea:focus{
+    outline: none;
+}
+```
+
+## 02 focus()
+
+```
+// 初次渲染就是focus到了textarea
+textarea.focus()
+```
+
+## 03 createElement()
+
+```
+// 用dom操作来创建节点，而不是之前的innerHTML
+const tagEl = document.createElement('span');
+tagEl.classList.add('tag');
+tagEl.innerText = tag;
+```
+
+## 04 appendChild()
+
+```
+// 分别加入进容器
+tagsEl.appendChild(tagEl);
+```
+
+## 05 setInterval
+
+```
+// setInterval 重复调用一个函数或执行一个方法，具有间隔时间
+const interval = setInterval(() => {
+    const randomTag = pickRandomTag();
+
+    if (randomTag !== undefined) {
+        highlightTag(randomTag);
+
+        setTimeout(() => {
+            unHighlightTag(randomTag);
+        }, 100);
+    }
+}, 100);
+```
+
+## 06 clearInterval
+
+```
+// 循环30次后，利用clearInterval清除setInterval，防止无限循环，并设置最后一次的随机选择到tag
+setTimeout(() => {
+    clearInterval(interval);
+
+    // 独立interval的最后一次随机选择
+    setTimeout(() => {
+        const randomTag = pickRandomTag();
+
+        highlightTag(randomTag);
+    }, 100);
+}, 100 * times);
+```
+
+## 07 Math.random()
+
+```
+// Math.random() 0-1 * tags.length 0-tags.length
+return tags[Math.floor(Math.random() * tags.length)];
+```
+
