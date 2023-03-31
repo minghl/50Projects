@@ -207,6 +207,14 @@ background-size: cover;
 }
 ```
 
+## 05 object-fit && object-position
+
+```
+// 裁剪图片位置
+object-fit: cover;
+object-position: 0% 60%;
+```
+
 # 08 Form Input Wave
 
 ## 01 innerHTML&innerText
