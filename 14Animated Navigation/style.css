@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #eafbff;
+    /*  linear-gradient不加逗号 */
+    background-image: linear-gradient(
+    to bottom,
+    #eafbff 0%,
+    #eafbff 50%,
+    #5290f9 50%,
+    /* 最后一个一定不要加逗号 */
+    #5290f9 100%
+    );
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+nav{
+    background-color: #fff;
+    padding: 20px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    /* transition -> width, 向宽度动画 */
+    transition: width 0.6s linear;
+    overflow-x: hidden;
+}
+
+nav.active{
+    width:350px;
+}
+
+nav ul{
+    display: flex;
+    /* cope with list pre-point */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 0;
+    transition: width 0.6s linear;
+}
+
+nav.active ul{
+    width: 100%;
+}
+
+nav ul li{
+    /* 各种transform和transition */
+    transform: rotateY(0deg);
+    opacity: 0;
+    transition: transform 0.6s linear, opacity 0.6s linear;
+}
+
+nav.active ul li {
+    opacity: 1;
+    /* 转一圈，deg180转反停下来 */
+    transform: rotateY(360deg);
+}
+
+nav ul a {
+    position: relative;
+    color: #000;
+    /* 去除a的下划线 */
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.icon{
+    background-color: #fff;
+    border:0;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    height: 30px;
+    width: 30px;
+}
+
+.icon:focus{
+    outline:0;
+}
+
+.icon .line{
+    /* 用纯css画直线 */
+    background-color: #5290f9;
+    height: 2px;
+    width: 20px;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    transition: transform 0.6s linear;
+}
+
+.icon .line2{
+    /* 如果 top 和 bottom 都是 auto，其计算值则都是 0；如果其中之一为 auto，则取另一个值的相反数；如果二者都不是 auto，bottom 将取 top 值的相反数。 */
+    top: auto;
+    bottom:10px;
+    /* background-color:red; */
+}
+
+nav.active .icon .line1{
+    transform: rotate(-765deg) translateY(5.5px);
+}
+
+nav.active .icon .line2{
+    /* translateY 负数是向上移动 */
+    transform: rotate(765deg) translateY(-5.5px);
+}

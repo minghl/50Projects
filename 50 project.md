@@ -471,3 +471,60 @@ setTimeout(() => {
 return tags[Math.floor(Math.random() * tags.length)];
 ```
 
+# 14 Animated Navigation
+
+## 01 linear-gradient
+
+```
+/*  linear-gradient不加逗号 */
+background-image: linear-gradient(
+to bottom,
+#eafbff 0%,
+#eafbff 50%,
+#5290f9 50%,
+/* 最后一个一定不要加逗号 */
+#5290f9 100%
+);
+```
+
+## 02 transition & transform
+
+```
+/* transition -> width, 向宽度动画 */
+transition: width 0.6s linear;
+
+/* 各种transform和transition */
+transform: rotateY(0deg);
+opacity: 0;
+transition: transform 0.6s linear, opacity 0.6s linear;
+
+/* 转一圈，deg180转反停下来 */
+transform: rotateY(360deg);
+```
+
+## 03 translate
+
+```
+/* translateY 负数是向上移动 */
+transform: rotate(765deg) translateY(-5.5px);
+```
+
+## 04 css paint the line
+
+```
+/* 用纯css画直线 */
+background-color: #5290f9;
+height: 2px;
+width: 20px;
+```
+
+## 05 list-style-type & text-decoration
+
+```
+/* 去除a的下划线 */
+text-decoration: none;
+
+/* cope with list pre-point */
+list-style-type: none;
+```
+
