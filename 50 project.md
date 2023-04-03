@@ -536,3 +536,42 @@ text-decoration: none;
 list-style-type: none;
 ```
 
+# 15 Incrementing Counter
+
+## 01 media & flex-direction
+
+```
+@media (max-width: 580px){
+    body{
+        flex-direction: column;
+    }
+}
+```
+
+## 02 data-target
+
+```
+// 获取data-target属性
+const target = +counter.getAttribute('data-target');
+```
+
+## 03 increase at the same rate
+
+```
+// 不同量，增加频率相同
+const increment = target / 200;
+```
+
+## 04 recursion
+
+```
+if (c < target) {
+    // 返回大于给定数字的整数，与floor相反
+    counter.innerText = `${Math.ceil(c + increment)}`;
+    setTimeout(updateCounter, 1);
+} else {
+    // 递归停止条件
+    counter.innerText = target;
+}
+```
+
