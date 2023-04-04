@@ -575,3 +575,63 @@ if (c < target) {
 }
 ```
 
+# 16 Drink Water
+
+## 01 :root
+
+```
+/* 放全局变量 */
+:root{
+    --border-color: #144fc6;
+    --fill-color:#6ab3f8;
+}
+```
+
+## 02 water Cup
+
+```
+/* 下边弧形 */
+border-radius: 0 0 40px 40px;
+height: 330px;
+width: 150px;
+margin: 30px 0;
+```
+
+## 03 click again
+
+```
+// 控制在点击小杯子，则归零
+if (idx === 7 && smallCups[idx].classList.contains('full')) idx--;
+else if (smallCups[idx].classList.contains('full') && !smallCups[idx].nextElementSibling.classList.contains('full')) idx--;
+```
+
+## 04 dynamic control water part
+
+```
+// 控制水部分
+if (fullCups === 0) {
+    percentage.style.visibility = "hidden";
+    percentage.style.height = 0;
+} else {
+    percentage.style.visibility = 'visible';
+    // 最后乘以330px，这是占的比例
+    percentage.style.height = `${fullCups / totalCups * 330}px`;
+    // 下半部的比例文字
+    percentage.innerText = `${fullCups / totalCups * 100}%`;
+}
+```
+
+## 05 dynamic control remained part
+
+```
+// 控制剩余部分
+if (fullCups === totalCups) {
+    remained.style.visibility = 'hidden';
+    remained.style.height = 0;
+} else {
+    remained.style.visibility = 'visible';
+    // 升的计算方法
+    liters.innerText = `${2 - (250 * fullCups / 1000)}L`
+}
+```
+
