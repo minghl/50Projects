@@ -635,3 +635,39 @@ if (fullCups === totalCups) {
 }
 ```
 
+# 17 Movie App
+
+## 01 flex-end
+
+```
+display: flex;
+/* 在右边 */
+justify-content: flex-end;
+```
+
+## 02 ::placeholder
+
+```
+/* placeholder加颜色 */
+.search::placeholder{
+    color: #7378c5;
+}
+```
+
+## 03 batch render
+
+```
+// 批量渲染逻辑，模版字符串，在纯js里面
+movieEl.innerHTML = `
+    <img src="${IMG_PATH + poster_path}" alt="${title}">
+    <div class="movie-info">
+    <h3>${title}</h3>
+    <span class="${getClassByRate(vote_average)}">${vote_average}</span>
+    </div>
+    <div class="overview">
+    <h3>Overview</h3>
+    ${overview}</div>
+`
+main.appendChild(movieEl);
+```
+
