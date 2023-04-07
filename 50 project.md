@@ -671,3 +671,51 @@ movieEl.innerHTML = `
 main.appendChild(movieEl);
 ```
 
+# 18 Background Slider
+
+## 01 cover shadow
+
+```
+/* 加阴影 */
+body::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+```
+
+## 02 carousel style
+
+```
+/* 轮播图思想 */
+.slide{
+    opacity: 0;
+    height: 100vh;
+    width: 100vw;
+    background-position: center centser;
+    background-size: cover; 
+    position: absolute;
+    top:-15vh;
+    left: -15vw;
+    transition: 0.4s ease;
+    z-index:1;
+}
+
+/* 轮播图思想2 */
+.slide.active{
+    opacity: 1;
+}
+```
+
+## 03 JS style naming principles
+
+```
+// js里面的style的名称是驼峰命名法
+body.style.backgroundImage = slides[activeSlide].style.backgroundImage;
+```
+
