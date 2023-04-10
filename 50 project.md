@@ -719,3 +719,75 @@ body::before{
 body.style.backgroundImage = slides[activeSlide].style.backgroundImage;
 ```
 
+# 19 Theme Clock
+
+## 01 needle css
+
+```
+/* 指针的画法 */
+.needle {
+  background-color: var(--primary-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 65px;
+  width: 3px;
+  transform-origin: bottom center;
+  transition: all 0.5s ease-in;
+}
+
+.needle.hour {
+    /* translate(-50%, -100%)移动位置 rotate(0deg)初始化角度 */
+  transform: translate(-50%, -100%) rotate(0deg);
+}
+
+.needle.minute {
+  transform: translate(-50%, -100%) rotate(0deg);
+  height: 100px;
+}
+
+.needle.second {
+  transform: translate(-50%, -100%) rotate(0deg);
+  height: 100px;
+  background-color: #e74c3c;
+}
+```
+
+## 02 ::after(inner point)
+
+```
+/* 只是为了点中加点 */
+.center-point::after {
+  content: '';
+  background-color: var(--primary-color);
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+```
+
+## 03 connect hour minute second
+
+```
+// 联动秒分时，动态rotate
+hourEl.style.transform = `translate(-50%, -100%) rotate(${scale(hoursForClock + minutes / 60, 0, 12, 0, 360)}deg)`
+minuteEl.style.transform = `translate(-50%, -100%) rotate(${scale(minutes + seconds / 60, 0, 60, 0, 360)}deg)`
+secondEl.style.transform = `translate(-50%, -100%) rotate(${scale(seconds, 0, 60, 0, 360)}deg)`
+
+timeEl.innerHTML = `${hoursForClock}:${minutes < 10 ? `0${minutes}` : minutes} ${ampm}`
+dateEl.innerHTML = `${days[day]}, ${months[month]} <span class="circle">${date}</span>`
+```
+
+## 04 setInterval
+
+```
+setTime()
+
+// 设置函数执行器
+setInterval(setTime, 1000)
+```
+
