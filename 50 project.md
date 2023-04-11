@@ -791,3 +791,66 @@ setTime()
 setInterval(setTime, 1000)
 ```
 
+# 20 Button Ripple Effect
+
+## 01 overflow: hidden
+
+```
+/* 隐藏侧边框 */
+overflow: hidden;
+```
+
+## 02 animation & keyframes
+
+```
+animation: scale 0.5s ease-out;
+
+/* keyframes是animation定义怎么动的，等同于transform之于transition，不过animation更复杂 */
+@keyframes scale {
+    from{
+        /* transform: scale(x) 是指放大多少倍
+           transform: translate(x,y) 是指向x和y平移多少
+        */
+        transform: translate(-50%,-50%) scale(0);
+    }
+    to {
+        transform: translate(-50%,-50%) scale(3);
+        opacity: 0;
+    }
+}
+```
+
+## 03 pageX & pageY
+
+```
+// 视口的x, y
+const x = e.pageX;
+const y = e.pageY;
+```
+
+## 04 offsetTop & offsetLeft
+
+```
+// button左上角的x, y
+const buttonTop = e.target.offsetTop;
+const buttonLeft = e.target.offsetLeft;
+```
+
+## 05 Element inner top & left
+
+```
+// button内部的top和left
+const xInside = x - buttonLeft;
+const yInside = y - buttonTop;
+```
+
+## 06 arrow function
+
+```
+button.addEventListener('click', function (e) {
+  // 回调函数不能使用箭头函数，不然this不会指向button
+  this.appendChild(circle);
+
+})
+```
+

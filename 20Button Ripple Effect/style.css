@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #000;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* 隐藏侧边框 */
+    overflow: hidden;
+    margin: 0;
+}
+
+button{
+    background-color: purple;
+    color: #fff;
+    border: 1px purple solid;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 20px 30px;
+    overflow: hidden;
+    margin: 10px 0;
+    position: relative;
+}
+
+button:focus{
+    outline: none;
+}
+
+button .circle{
+    position: absolute;
+    background-color: #fff;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation: scale 0.5s ease-out;
+}
+
+/* keyframes是animation定义怎么动的，等同于transform之于transition，不过animation更复杂 */
+@keyframes scale {
+    from{
+        /* transform: scale(x) 是指放大多少倍
+           transform: translate(x,y) 是指向x和y平移多少
+        */
+        transform: translate(-50%,-50%) scale(0);
+    }
+    to {
+        transform: translate(-50%,-50%) scale(3);
+        opacity: 0;
+    }
+}
