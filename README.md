@@ -889,3 +889,97 @@ this.className += ' hold';
 this.append(fill);
 ```
 
+# 22 Drawing App
+
+## 01 input type='color'
+
+```
+// 调色板
+<input type="color" id="color" />
+```
+
+## 02 canvas
+
+```
+<canvas id="canvas" width="800" height="700"></canvas>
+```
+
+## 03  \> * :last-child
+
+```
+// 最后一个一级子元素
+.toolbox > *:last-child{
+    margin-left: auto;
+}
+```
+
+## 04 offsetX & offsetY
+
+```
+// offsetX：距离点击最小的元素边缘（父元素）的横、纵坐标。offsetLeft,offsetTop 相对于最近的祖先定位元素。
+// offsetLeft 和offsetX相似 注意区分 offsetLeft相对于offsetParent offsetParent的有定位，定位 ，定位 ，没有定位一直往上找，找到body 而offsetX是距离点击最小元素边缘 无定位要求
+
+canvas.addEventListener('mousedown', (e) => {
+    isPressed = true;
+
+    x = e.offsetX;
+    y = e.offsetY;
+})
+```
+
+## 05 canvas functions
+
+```
+// canvas的一些方法
+
+function drawCircle(x, y) {
+    ctx.beginPath();
+    ctx.arc(x, y, size, 0, Math.PI * 2)
+    ctx.fillStyle = color;
+    ctx.fill();
+}
+
+function drawLine(x1, y1, x2, y2) {
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = size * 2;
+    ctx.stroke();
+}
+
+clearEl.addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height))
+```
+
+## 06 mousedown & mouseup & mousemove
+
+```
+canvas.addEventListener('mousedown', (e) => {
+    isPressed = true;
+
+    x = e.offsetX;
+    y = e.offsetY;
+})
+
+document.addEventListener('mouseup', (e) => {
+    isPressed = false;
+
+    x = undefined;
+    y = undefined;
+})
+
+canvas.addEventListener('mousemove', (e) => {
+    if (isPressed) {
+        const x2 = e.offsetX;
+        const y2 = e.offsetY;
+
+        drawCircle(x2, y2);
+        drawLine(x, y, x2, y2);
+
+        x = x2;
+        y = y2;
+    }
+})
+
+```
+
